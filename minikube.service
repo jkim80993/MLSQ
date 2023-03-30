@@ -1,0 +1,15 @@
+[Unit]
+Description=Minikube Cluster
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/minikube start --force --driver=docker
+RemainAfterExit=true
+ExecStop=/usr/local/bin/minikube stop
+StandardOutput=journal
+User=cotlab
+Group=cotlab
+
+[Install]
+WantedBy=multi-user.target
